@@ -1,0 +1,17 @@
+{
+  "name": "proyecto-backend1",
+  "version": "1.0.0",
+  "description": "Api-Ecommerce",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch ./src/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Leonel Juarez",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "uuid": "^11.0.5"
+  }
+}
