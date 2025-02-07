@@ -1,11 +1,12 @@
 import { Router } from "express";
 import fs from "fs";
 import { v4 as uuidv4 } from 'uuid';
-
+//import { validateProducts } from "./src/middleware/validateProducts";
+import { validateProducts } from "../middleware/validateProducts.js";
 export const ProductsRouter = Router();
 
 const pathProducts = "./src/data/products.json"
-const products = [];
+
 
 ProductsRouter.get("/" , async (req,res)=>{
     try {
@@ -36,43 +37,49 @@ ProductsRouter.get("/:id" , async(req,res)=>{
     }
 })
 
-ProductsRouter.post("/", async (req,res)=>{
-    //Leo el archivo antes y lo parseamos a Json
-    let readProdu = await fs.promises.readFile(pathProducts, "utf-8");
-    const products = JSON.parse(readProdu);
-
-    //ID Autoincremental
-    const id = uuidv4();
-    //Sacamos todos los productos de  req body
-    const {
-        title,
-        description,
-        price,
-        thumbnail,
-        code,
-        stock,
-        status,
-        category } = req.body;
-
-    const product = { 
-        id,
-        title,
-        description,
-        price,
-        thumbnail,
-        code,
-        stock,
-        category, 
-        status  }
-    //Pusheamos el producto a productoS
-    products.push(product);
-
-    //Trasformamos a string
-    const productsString = JSON.stringify(products, null, "\t");
-    //Creamos el archivo y lo escibimos
-    await fs.promises.writeFile(pathProducts , productsString);
-
-    res.send({message:"Producto creado" , data: product});
+ProductsRouter.post("/", validateProducts, async (req,res)=>{
+    
+    try {
+        //Leo el archivo antes y lo parseamos a Json
+        let readProdu = await fs.promises.readFile(pathProducts, "utf-8");
+        const products = JSON.parse(readProdu);
+    
+        //ID Autoincremental
+        const id = uuidv4();
+        //Sacamos todos los productos de  req body
+        const {
+            title,
+            description,
+            price,
+            thumbnail,
+            code,
+            stock,
+            status,
+            category } = req.body;
+    
+        const product = { 
+            id,
+            title,
+            description,
+            price,
+            thumbnail,
+            code,
+            stock,
+            category, 
+            status  }
+        //Pusheamos el producto a productoS
+        products.push(product);
+    
+        //Trasformamos a string
+        const productsString = JSON.stringify(products, null, "\t");
+        //Creamos el archivo y lo escibimos
+        await fs.promises.writeFile(pathProducts , productsString);
+    
+        res.send({message:"Producto creado" , data: product});
+        
+    } catch (error) {
+        res.status(400).send({message: error.message})        
+    }
 
     
 })

@@ -1,1 +1,17 @@
-[]
+[
+	{
+		"id": "a99dcde5-517f-49a3-8320-65b87cabc0b0",
+		"products": []
+	},
+	{
+		"id": "bc342ec9-884e-445f-b5e0-e0389a7f4d52",
+		"products": []
+	},
+	{
+		"id": "778ba65c-0d94-4185-9437-2cbd8ffbac98",
+		"products": [
+			"f9dd5cbd-7423-45b2-a2f8-a4e7b12713e1",
+			"7279f08a-a62b-4462-ac45-ced372f1920b"
+		]
+	}
+]

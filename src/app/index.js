@@ -17,7 +17,7 @@ const initApp = () =>{
     
     app.use("/api/products" , ProductsRouter) //Ruta a product
 
-    //app.use("/api/carts" , CartsRouter) //Ruta a carts
+    app.use("/api/carts" , CartsRouter) //Ruta a carts
     
 
     return app;

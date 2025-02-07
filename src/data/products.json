@@ -9,5 +9,16 @@
 		"stock": 5,
 		"category": "Tecnologia",
 		"status": true
+	},
+	{
+		"id": "7279f08a-a62b-4462-ac45-ced372f1920b",
+		"title": "Samsung A70",
+		"description": "Samsung A70",
+		"price": 250000,
+		"thumbnail": [],
+		"code": 125,
+		"stock": 5,
+		"category": "Tecnologia",
+		"status": true
 	}
 ]
