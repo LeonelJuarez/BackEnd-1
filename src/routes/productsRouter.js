@@ -3,6 +3,7 @@ import fs from "fs";
 import { v4 as uuidv4 } from 'uuid';
 //import { validateProducts } from "./src/middleware/validateProducts";
 import { validateProducts } from "../middleware/validateProducts.js";
+
 export const ProductsRouter = Router();
 
 const pathProducts = "./src/data/products.json"

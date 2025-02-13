@@ -1,0 +1,12 @@
+<!--Vista de todos los productos-->
+<div>
+    <h1>Lista de productos</h1>
+</div>
+<div class="card">
+    {{#each products}}
+    <h2> {{title}} - {{description}} </h2>
+    <p> {{price}} -- {{thumbnail}} </p>
+    <p> {{code}} -- {{stock}} </p>
+    <p> {{category}} -- {{status}} </p>
+    {{/each}}
+</div>
