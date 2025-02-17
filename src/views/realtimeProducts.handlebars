@@ -1,1 +1,49 @@
 <!--Estara en el endpoint /realtimeproducts con websockets-->
+<form id="form">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title"><br>
+
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description"><br>
+    
+    <label for="price">Price:</label><br>
+    <input type="number" id="price" name="price"><br>
+
+    <label for="thumbnail">thumbnail:</label><br>
+    <input type="text" id="thumbnail" name="thumbnail"><br>
+
+    <label for="code">Code:</label><br>
+    <input type="number" id="code" name="code"><br>
+
+    <label for="stock">Stock:</label><br>
+    <input type="number" id="stock" name="stock"><br>
+
+    <label for="category">Categoria:</label><br>
+    <input type="text" id="category" name="category"><br><br>
+
+    <button id="cargar">Cargar</button>
+</form>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+    import fs from "fs";
+    const socket = io()
+    console.log(socket)
+
+    //Capturamos el formulario y los inputs
+    const form = document.getElementById("form");
+    const title = document.getElementById("title");
+    const description = document.getElementById("description");
+    const price = document.getElementById("price");
+    const thumbnail = document.getElementById("thumbnail");
+    const code = document.getElementById("code");
+    const stock = document.getElementById("stock");
+    const category = document.getElementById("category");
+    const btn = document.getElementById("cargar")
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        socket.emit("product", title.value)
+    })
+</script>

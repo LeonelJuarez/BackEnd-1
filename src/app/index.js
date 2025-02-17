@@ -3,6 +3,7 @@ import express from "express";
 import {ProductsRouter} from "../routes/productsRouter.js";
 import  {CartsRouter}  from "../routes/cartsRouter.js";
 import { engine } from "express-handlebars";
+import ViewRouter from "../routes/viewRouter.js";
 import fs from "fs"
 //import path from "path";
 
@@ -21,7 +22,7 @@ const initApp = () =>{
     app.set("views" , "./src/views");
     app.set("view engine", "handlebars");
 
-    app.get("/home", async (req,res)=>{
+    /*app.get("/home", async (req,res)=>{
         try {
             const productString = await fs.promises.readFile("./src/data/products.json", "utf-8");
             const productObj = JSON.parse(productString);
@@ -29,8 +30,9 @@ const initApp = () =>{
         } catch (error) {
          res.status(500).send({message: error})   
         }
-    })
+    })*/
     
+    app.use("/", ViewRouter)
     app.use("/api/products" , ProductsRouter) //Ruta a product
 
     app.use("/api/carts" , CartsRouter) //Ruta a carts
